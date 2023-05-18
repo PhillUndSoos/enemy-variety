@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const game = new Game();
-
+    //needs to be set to 1 to preven NaN
     let lastTime = 1
     function animate(timeStamp) {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         requestAnimationFrame(animate);
     }
+    
     animate(0);
     
 })
+
