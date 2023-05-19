@@ -8,7 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
     canvas.height = 800;
 
     class Game {
-        constructor() { 
+        constructor(ctx, width, height) { 
+            this.ctx = ctx;
+            this.width = width;
+            this.height = height;
             this.enemies = [];
             this.#addNewEnemy();
             console.log(this.enemies)
@@ -45,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    const game = new Game();
+    const game = new Game(ctx, canvas.width, canvas.height);
     //needs to be set to 1 to preven NaN
     let lastTime = 1
     function animate(timeStamp) {
