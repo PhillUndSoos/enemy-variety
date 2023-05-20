@@ -27,14 +27,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //hashtag indicates private method, cant be called outside class
         #addNewEnemy() {
-            this.enemies.push(new Enemy());
+            this.enemies.push(new Enemy(this));
         }
     }
 
     class Enemy {
-        constructor() {
-            this.x = 100;
-            this.y = 100;
+        constructor(game) {
+            this.game = game
+            this.x = this.game.width;
+            this.y = Math.random() * this.game.height;
             this.width = 100;
             this.height = 100;
         }
