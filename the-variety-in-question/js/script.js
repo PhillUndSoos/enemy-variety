@@ -13,11 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
             this.width = width;
             this.height = height;
             this.enemies = [];
-            this.#addNewEnemy();
+            this.enemyInterval = 400;
+            this.enemyTimer = 0;
             console.log(this.enemies)
         }
 
         update() {
+            if (this.enemyTimer > this.enemyInterval) {
+                this.#addNewEnemy();
+                this.enemyTimer = 0;
+            } else {
+                this.enemyTimer++
+            }
+
+
             this.enemies.forEach(obj => obj.update());
         }
 
