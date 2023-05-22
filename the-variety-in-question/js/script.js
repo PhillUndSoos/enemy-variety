@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', function () {
             this.width = width;
             this.height = height;
             this.enemies = [];
-            this.enemyInterval = 400;
+            this.enemyInterval = 1000;
             this.enemyTimer = 0;
             console.log(this.enemies)
         }
 
-        update() {
+        update(deltaTime) {
             if (this.enemyTimer > this.enemyInterval) {
                 this.#addNewEnemy();
                 this.enemyTimer = 0;
             } else {
-                this.enemyTimer++
+                this.enemyTimer += deltaTime;
             }
 
 
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         draw() {
-            this.enemies.forEach(obj => obj.draw());
+            this.enemies.forEach(obj => obj.draw(this.ctx));
         }
 
         //hashtag indicates private method, cant be called outside class
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             this.x--
         }
 
-        draw() {
+        draw(ctx) {
             ctx.fillRect(this.x, this.y, this.width, this.height)
         }
     }
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const deltaTime = timeStamp - lastTime;
         lastTime = timeStamp;
 
-        game.update();
+        game.update(deltaTime);
         game.draw();
 
         requestAnimationFrame(animate);
