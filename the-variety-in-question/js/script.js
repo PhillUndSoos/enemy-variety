@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const ctx = canvas.getContext('2d');
     canvas.width = 500;
     canvas.height = 800;
+    frameCount = 0;
 
     class Game {
         constructor(ctx, width, height) { 
@@ -70,6 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         game.update(deltaTime);
         game.draw();
 
+        frameCount++
         requestAnimationFrame(animate);
     }
     
